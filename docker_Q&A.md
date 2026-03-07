@@ -35,7 +35,21 @@ Containerization solves this problem by packaging everything required to run the
 -Runs a complete operating system on top of a hypervisor.
 ```
 What is a Docker image?
+```
+A Docker Image is a read-only template used to create Docker containers.
+ It contains everything needed to run an application.
+It includes:
+Application code
+Runtime (Java, Python, Node.js, etc.)
+Libraries
+Dependencies
+Environment variables
+Configuration files
+Docker images are used by Docker to create and run containers.
 
+Simple Definition
+Docker Image = Blueprint or template used to create Docker containers.
+```
 What is a Docker container?
 
 What is Docker Hub?
