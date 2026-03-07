@@ -109,7 +109,8 @@ Dockerfile = Script with instructions to create a Docker image.
 ---
 ### What are Docker layers?
 ```
-Docker layers are the building blocks of a Docker image. Every instruction in a Dockerfile (like FROM, RUN, COPY) creates a new layer in the image.
+Docker layers are the building blocks of a Docker image. Every instruction in a Dockerfile (like FROM, RUN, COPY)
+creates a new layer in the image.
 These layers make Docker images efficient, reusable, and lightweight. 🐳
 
 Simple Definition
