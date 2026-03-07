@@ -1,6 +1,6 @@
 1. Docker Interview Questions (30)
 
-### 1 What is Docker?
+### 1. What is Docker?
   Docker is a containerization platform used to build, package, and run applications in containers. 🐳
 
 A container is a lightweight package that includes:
