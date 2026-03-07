@@ -18,8 +18,33 @@ System tools
 Because everything needed is inside the container, the application runs the same way on any machine (developer laptop, server, cloud, etc.)
 
 ### 2. What is containerization?
+Containerization is a technology used to package an application along with all its dependencies, libraries, and configuration files into a single unit called a container so that it runs consistently across different environments. 📦🐳
+Why Containerization is Needed
 
-Difference between Docker and Virtual Machine?
+Sometimes an application works on a developer's laptop but fails on the server because of:
+
+Different OS
+
+Missing libraries
+
+Different runtime versions
+
+Containerization solves this problem by packaging everything required to run the application.
+
+### 3. Difference between Docker and Virtual Machine?
+Docker (Containers)
+
+Lightweight virtualization technology.
+
+Packages application + dependencies into containers.
+
+Containers share the host operating system kernel.
+
+Virtual Machine (VM)
+
+Full virtualization technology.
+
+Runs a complete operating system on top of a hypervisor.
 
 What is a Docker image?
 
