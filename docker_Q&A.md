@@ -16,7 +16,8 @@ Dependencies
 
 System tools
 
-Because everything needed is inside the container, the application runs the same way on any machine (developer laptop, server, cloud, etc.)
+Because everything needed is inside the container,
+the application runs the same way on any machine (developer laptop, server, cloud, etc.)
 ```
 ### 2. What is containerization?
 Containerization is a technology used to package an application along with all its dependencies, libraries, and configuration files into a single unit called a container so that it runs consistently across different environments. 📦🐳
