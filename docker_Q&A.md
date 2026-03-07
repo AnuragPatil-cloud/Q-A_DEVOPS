@@ -1,4 +1,4 @@
-# ocker Interview Questions (30)
+# Docker Interview Questions (30)
 
 ### 1. What is Docker?
 ```
