@@ -1,21 +1,14 @@
-1. Docker Interview Questions (30)
+# ocker Interview Questions (30)
 
 ### 1. What is Docker?
 ```
   Docker is a containerization platform used to build, package, and run applications in containers. 🐳
-
 A container is a lightweight package that includes:
-
-Application code
-
-Runtime
-
-Libraries
-
-Dependencies
-
-System tools
-
+-Application code
+-Runtime
+-Libraries
+-Dependencies
+-System tools
 Because everything needed is inside the container,
 the application runs the same way on any machine (developer laptop, server, cloud, etc.)
 ```
@@ -23,16 +16,11 @@ the application runs the same way on any machine (developer laptop, server, clou
 ```
 Containerization is a technology used to package an application along with all its dependencies, libraries,
 and configuration files into a single unit called a container so that it runs consistently across different environments. 📦🐳
-<br>-Why Containerization is Needed:
-<br>
+*Why Containerization is Needed:
 Sometimes an application works on a developer's laptop but fails on the server because of:
-
-Different OS
-
-Missing libraries
-
-Different runtime versions
-
+-Different OS
+-Missing libraries
+-Different runtime versions
 Containerization solves this problem by packaging everything required to run the application.
 ```
 ### 3. Difference between Docker and Virtual Machine?
