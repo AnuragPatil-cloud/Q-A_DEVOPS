@@ -32,19 +32,19 @@ Different runtime versions
 Containerization solves this problem by packaging everything required to run the application.
 
 ### 3. Difference between Docker and Virtual Machine?
-Docker (Containers)
+<span style="color:red">Docker (Containers)</span>
 
-Lightweight virtualization technology.
+-Lightweight virtualization technology.
 
-Packages application + dependencies into containers.
+-Packages application + dependencies into containers.
 
-Containers share the host operating system kernel.
+-Containers share the host operating system kernel.
 
-Virtual Machine (VM)
+<span style="color:red">Virtual Machine (VM)</span>
 
-Full virtualization technology.
+-Full virtualization technology.
 
-Runs a complete operating system on top of a hypervisor.
+-Runs a complete operating system on top of a hypervisor.
 
 What is a Docker image?
 
