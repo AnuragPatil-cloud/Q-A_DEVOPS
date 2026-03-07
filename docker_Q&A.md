@@ -141,11 +141,13 @@ Each layer is read-only, except the container’s writable layer when running.
 ---
 ### What is Docker daemon?
 ```
-The Docker Daemon is the background service that runs on your system and manages Docker objects, such as images, containers, networks, and volumes.
+The Docker Daemon is the background service that runs on your system and manages Docker objects,
+such as images, containers, networks, and volumes.
  It is a core component of Docker. 🐳
 
 Simple Definition
-Docker Daemon = The background service that listens for Docker commands and manages Docker containers and images.
+Docker Daemon = The background service that listens for Docker commands and
+ manages Docker containers and images.
 
 Key Points
 Runs in the background
@@ -167,7 +169,34 @@ The Docker Client is the command-line interface (CLI) or tool that you use to in
  It sends commands to the Docker Daemon, which then performs the requested actions. 🐳
 
 Simple Definition
-Docker Client = The interface (CLI) you use to communicate with the Docker Daemon to manage images, containers, networks, and volumes.
+Docker Client = The interface (CLI) you use to communicate with the Docker Daemon to
+ manage images, containers, networks, and volumes.
+
+Key Points
+User-facing tool
+You type commands like docker run, docker build, or docker ps.
+Sends requests to Docker Daemon
+Communicates over a REST API or Unix socket.
+Does not perform tasks itself
+It only sends instructions; the daemon executes them.
+Common Docker Client Commands
+| Command                    | Description                       |
+| -------------------------- | --------------------------------- |
+| `docker run nginx`         | Run a container from Nginx image  |
+| `docker ps`                | List running containers           |
+| `docker build -t myapp .`  | Build an image from a Dockerfile  |
+| `docker pull ubuntu`       | Download an image from a registry |
+| `docker stop container_id` | Stop a running container          |
+
+Docker Client vs Docker Daemon
+| Feature          | Docker Client      | Docker Daemon              |
+| ---------------- | ------------------ | -------------------------- |
+| Role             | Sends commands     | Executes commands          |
+| User Interaction | Yes                | No (runs in background)    |
+| Example          | `docker run myapp` | `dockerd` service          |
+| Location         | CLI or API         | Background process on host |
+
+
 ```
 ---
 ### Explain Docker architecture.
@@ -215,13 +244,17 @@ Private: Amazon Elastic Container Registry, Google Container Registry
 ---
 ### What is the difference between COPY and ADD?
 ```
-In Dockerfiles, both COPY and ADD are used to move files from the host machine into a Docker image, but they have important differences.
+In Dockerfiles, both COPY and ADD are used to move files from the host machine into a Docker image,
+ but they have important differences.
  This is a very common Docker interview question. 🐳
 
-| Instruction | Purpose                                                                                                                  |
-| ----------- | ------------------------------------------------------------------------------------------------------------------------ |
-| **COPY**    | Copies files or directories from the host into the Docker image. Simple and straightforward.                             |
-| **ADD**     | Copies files or directories from host **and can also fetch files from URLs** and extract compressed files automatically. |
+| Instruction | Purpose                                                                       |
+| ----------- | --------------------------------------------------------------------------    |
+| **COPY**    | Copies files or directories from the host into the Docker image.              |
+|             |   Simple and straightforward.                                                 |
+|             |                                                                               |
+| **ADD**     | Copies files or directories from host **and can also fetch files from URLs**  |
+|             |   and extract compressed files automatically.                                 |
 
 | Feature         | COPY                     | ADD                                                 |
 | --------------- | ------------------------ | --------------------------------------------------- |
