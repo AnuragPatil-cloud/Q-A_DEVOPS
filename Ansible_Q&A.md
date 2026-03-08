@@ -1,335 +1,327 @@
-# 🏗 Terraform Interview Questions & Answers (DevOps)
+# ⚙️ Ansible Interview Questions & Answers (DevOps)
 
-This section contains commonly asked **Terraform interview questions for DevOps Engineers (Fresher – 2+ Years Experience).**
-
----
-
-# 1. What is Terraform?
-
-Terraform is an **Infrastructure as Code (IaC) tool** developed by HashiCorp used to create, manage, and provision infrastructure using code.
-
-It supports multiple cloud providers like:
-
-- AWS
-- Azure
-- Google Cloud
-- Kubernetes
-- VMware
+This section contains commonly asked **Ansible interview questions for DevOps Engineers (Fresher – 2+ Years Experience).**
 
 ---
 
-# 2. What is Infrastructure as Code (IaC)?
+# 1. What is Ansible?
 
-Infrastructure as Code means **managing infrastructure using configuration files instead of manual processes**.
+Ansible is an **open-source configuration management and automation tool** used for:
 
-Benefits:
+- Application deployment
+- Configuration management
+- Infrastructure automation
+- Orchestration
 
-- Automation
-- Version control
-- Consistency
-- Faster deployments
+It works using **SSH and does not require any agent installation on target machines.**
 
 ---
 
-# 3. What language does Terraform use?
+# 2. Why do we use Ansible?
 
-Terraform uses **HCL (HashiCorp Configuration Language)**.
+Ansible helps in:
+
+- Automating repetitive tasks
+- Managing multiple servers
+- Application deployment
+- Configuration management
+- Infrastructure provisioning
+
+---
+
+# 3. What is Configuration Management?
+
+Configuration management is the process of **maintaining systems in a desired and consistent state automatically**.
+
+Example tools:
+
+- Ansible
+- Puppet
+- Chef
+- SaltStack
+
+---
+
+# 4. What is Ansible Architecture?
+
+Ansible uses a **simple architecture**:
+
+Control Node  
+The machine where Ansible is installed.
+
+Managed Nodes  
+The servers that Ansible manages through SSH.
+
+Inventory  
+File containing the list of target servers.
+
+Playbooks  
+YAML files that define automation tasks.
+
+---
+
+# 5. What is an Inventory in Ansible?
+
+An inventory file contains **a list of servers that Ansible will manage**.
 
 Example:
 
 ```
-resource "aws_instance" "web" {
-  ami           = "ami-123456"
-  instance_type = "t2.micro"
-}
+[webservers]
+192.168.1.10
+192.168.1.11
+
+[dbservers]
+192.168.1.20
 ```
 
 ---
 
-# 4. What are Terraform providers?
+# 6. What is a Playbook?
 
-Providers are **plugins that allow Terraform to interact with APIs of cloud platforms**.
+A playbook is a **YAML file used to define automation tasks in Ansible**.
 
-Example providers:
+Example playbook:
 
-- AWS
-- Azure
-- Google Cloud
-- Kubernetes
+```yaml
+- name: Install nginx
+  hosts: webservers
+  become: yes
+
+  tasks:
+    - name: Install nginx package
+      apt:
+        name: nginx
+        state: present
+```
+
+---
+
+# 7. What are Ansible Modules?
+
+Modules are **small programs used to perform specific tasks on managed nodes**.
+
+Common modules:
+
+- apt
+- yum
+- copy
+- file
+- service
+- user
+- package
 
 Example:
 
-```
-provider "aws" {
-  region = "ap-south-1"
-}
+```yaml
+- name: Install nginx
+  apt:
+    name: nginx
+    state: present
 ```
 
 ---
 
-# 5. What is a Terraform resource?
+# 8. What is an Ansible Role?
 
-A resource is a **component of infrastructure** managed by Terraform.
+Roles are used to **organize playbooks and tasks into reusable components**.
 
-Examples:
+Example structure:
 
-- EC2 instance
-- VPC
-- S3 bucket
-- Security group
+```
+roles/
+  webserver/
+    tasks/
+    handlers/
+    templates/
+    files/
+    vars/
+```
+
+---
+
+# 9. What are Ansible Tasks?
+
+Tasks are **individual operations performed in a playbook**.
 
 Example:
 
-```
-resource "aws_instance" "example" {
-  ami           = "ami-0abcdef123456"
-  instance_type = "t2.micro"
-}
+```yaml
+tasks:
+  - name: Start nginx service
+    service:
+      name: nginx
+      state: started
 ```
 
 ---
 
-# 6. What are Terraform modules?
+# 10. What are Ansible Handlers?
 
-Modules are **reusable Terraform configurations** used to organize infrastructure code.
-
-Example use cases:
-
-- VPC module
-- EC2 module
-- Security group module
-
----
-
-# 7. What is Terraform state?
-
-Terraform state is a **file that stores information about the infrastructure Terraform manages**.
-
-Default state file:
-
-```
-terraform.tfstate
-```
-
-State helps Terraform track changes and manage infrastructure.
-
----
-
-# 8. What is remote state?
-
-Remote state stores the Terraform state file in **remote storage instead of locally**.
-
-Common remote backends:
-
-- AWS S3
-- Terraform Cloud
-- Azure Storage
+Handlers are **tasks that run only when triggered by a notification**.
 
 Example:
 
-```
-backend "s3" {
-  bucket = "terraform-state"
-  key    = "dev/terraform.tfstate"
-  region = "ap-south-1"
-}
+```yaml
+tasks:
+  - name: Copy config file
+    copy:
+      src: nginx.conf
+      dest: /etc/nginx/nginx.conf
+    notify: restart nginx
+
+handlers:
+  - name: restart nginx
+    service:
+      name: nginx
+      state: restarted
 ```
 
 ---
 
-# 9. Terraform Workflow
+# 11. What are Ansible Variables?
 
-The basic Terraform workflow is:
-
-```
-terraform init
-terraform plan
-terraform apply
-terraform destroy
-```
-
-Explanation:
-
-terraform init  
-Initializes the Terraform project.
-
-terraform plan  
-Shows what changes Terraform will make.
-
-terraform apply  
-Creates or updates infrastructure.
-
-terraform destroy  
-Deletes infrastructure.
-
----
-
-# 10. What is `terraform init`?
-
-`terraform init` initializes the working directory and downloads required provider plugins.
+Variables allow **dynamic values in playbooks**.
 
 Example:
 
-```
-terraform init
-```
-
----
-
-# 11. What is `terraform plan`?
-
-`terraform plan` shows **what changes Terraform will make before applying them**.
-
-Example:
-
-```
-terraform plan
-```
-
----
-
-# 12. What is `terraform apply`?
-
-`terraform apply` creates or updates infrastructure according to the Terraform configuration.
-
-Example:
-
-```
-terraform apply
-```
-
----
-
-# 13. What is `terraform destroy`?
-
-`terraform destroy` removes all resources created by Terraform.
-
-Example:
-
-```
-terraform destroy
-```
-
----
-
-# 14. What are Terraform variables?
-
-Variables allow **dynamic configuration of Terraform code**.
-
-Example:
-
-```
-variable "instance_type" {
-  default = "t2.micro"
-}
+```yaml
+vars:
+  package_name: nginx
 ```
 
 Use variable:
 
-```
-instance_type = var.instance_type
+```yaml
+name: "{{ package_name }}"
 ```
 
 ---
 
-# 15. What are Terraform outputs?
+# 12. What are Ansible Facts?
 
-Outputs display useful information after infrastructure is created.
+Facts are **system information collected by Ansible from managed nodes**.
+
+Example:
+
+- IP address
+- OS version
+- Memory
+
+Command:
+
+```
+ansible all -m setup
+```
+
+---
+
+# 13. What is Idempotency in Ansible?
+
+Idempotency means **running the same playbook multiple times will not change the system if it is already in the desired state.**
+
+Example:
+
+If nginx is already installed, Ansible will not install it again.
+
+---
+
+# 14. Important Ansible Commands
+
+```
+ansible --version
+ansible all -m ping
+ansible-playbook playbook.yml
+ansible-inventory --list
+ansible-doc module_name
+```
+
+---
+
+# 15. How do you test Ansible connectivity?
+
+```
+ansible all -m ping
+```
+
+---
+
+# 16. How do you run an Ansible playbook?
+
+```
+ansible-playbook playbook.yml
+```
+
+---
+
+# 17. What is Ansible Galaxy?
+
+Ansible Galaxy is a **repository for sharing Ansible roles**.
 
 Example:
 
 ```
-output "instance_ip" {
-  value = aws_instance.web.public_ip
-}
+ansible-galaxy install geerlingguy.nginx
 ```
 
 ---
 
-# 16. What is `terraform fmt`?
+# 18. What is YAML in Ansible?
 
-`terraform fmt` formats Terraform code according to standard style.
+YAML is a **human-readable data format used to write Ansible playbooks**.
+
+Rules:
+
+- Uses indentation
+- Key-value format
+- No tabs allowed
 
 Example:
 
 ```
-terraform fmt
+name: nginx
+state: present
 ```
 
 ---
 
-# 17. What is `terraform validate`?
+# 19. Real DevOps Scenario
 
-`terraform validate` checks whether Terraform configuration is syntactically correct.
+### Problem
+
+You need to install nginx on **50 servers**.
+
+### Solution
+
+Use Ansible playbook to install nginx on all servers automatically.
 
 Example:
 
 ```
-terraform validate
+ansible-playbook install-nginx.yml
 ```
-
----
-
-# 18. What is a Terraform backend?
-
-A backend defines **where Terraform stores its state file**.
-
-Example backends:
-
-- Local
-- S3
-- Terraform Cloud
-
----
-
-# 19. What is Terraform workspace?
-
-Workspaces allow you to **manage multiple environments using the same Terraform configuration**.
-
-Example environments:
-
-- dev
-- staging
-- production
-
-Example:
-
-```
-terraform workspace new dev
-```
-
----
-
-# 20. Real DevOps Scenario
-
-### Problem: Infrastructure created manually in AWS.
-
-Solution:
-
-Use Terraform to **automate infrastructure provisioning**.
 
 Benefits:
 
-- Consistent infrastructure
-- Version-controlled code
-- Faster deployments
-- Easy rollback
+- Faster deployment
+- No manual login to servers
+- Consistent configuration
 
 ---
 
-# 🚀 Why Terraform is Important for DevOps
+# 20. Why Ansible is Important for DevOps
 
-Terraform helps DevOps teams:
+Ansible helps DevOps teams:
 
-- Automate infrastructure provisioning
-- Manage cloud infrastructure using code
-- Maintain consistent environments
-- Integrate with CI/CD pipelines
+- Automate server configuration
+- Deploy applications
+- Manage infrastructure
+- Maintain consistency across environments
 
-Terraform integrates with:
+Ansible integrates with:
 
 - AWS
-- Kubernetes
 - Docker
+- Kubernetes
+- Terraform
 - Jenkins
-- GitHub Actions
